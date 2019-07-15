@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import TabBar from './TabBar';
 
-export default class TabBarContainer extends Component {
-  constructor(props) {
-    super(props);
+import { selectCurrentTab } from './tabsSelectors';
+import { selectTab } from './tabsActions';
 
-    const { tabs = [{ name: null }] } = props;
+const mapState = state => {
+  const currentTab = selectCurrentTab(state);
 
-    const firstTab = tabs[0];
+  return { currentTab };
+};
 
-    this.state = {
-      currentTab: firstTab.name,
-    };
-  }
+const actions = {
+  onTabClick: selectTab,
+};
 
-  onTabClick = name => {
-    this.setState({ currentTab: name });
-  };
-
-  render() {
-    const { tabs, ...otherProps } = this.props;
-    const { currentTab } = this.state;
-
-    return (
-      <TabBar
-        {...otherProps}
-        currentTab={currentTab}
-        onTabClick={this.onTabClick}
-        tabs={tabs}
-      />
-    );
-  }
-}
+export default connect(
+  mapState,
+  actions
+)(TabBar);

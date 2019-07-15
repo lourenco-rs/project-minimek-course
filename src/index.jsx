@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import 'semantic-ui-css/semantic.css';
-// import App from './App';
 
 import configureStore from './store/configureStore';
 
