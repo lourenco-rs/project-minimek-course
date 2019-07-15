@@ -1,9 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
 
 import ToggleDisplay from '../../common/components/ToggleDisplay';
 
 import Tab from './Tab';
+
+import { selectCurrentTab } from './tabsSelectors';
+import { selectTab } from './tabsActions';
+
+const mapState = state => {
+  const currentTab = selectCurrentTab(state);
+
+  return { currentTab };
+};
+
+const actions = {
+  onTabClick: selectTab,
+};
 
 const TabBar = props => {
   const { tabs, currentTab, onTabClick, ...otherProps } = props;
@@ -42,4 +56,7 @@ const TabBar = props => {
   );
 };
 
-export default TabBar;
+export default connect(
+  mapState,
+  actions
+)(TabBar);
