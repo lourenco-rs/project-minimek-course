@@ -5153,6 +5153,13 @@ immer@1.10.0:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.10.0.tgz#bad67605ba9c810275d91e1c2a47d4582e98286d"
   integrity sha512-O3sR1/opvCDGLEVcvrGTMtLac8GJ5IwZC4puPrLuRj3l7ICKvkmA0vGuU9OW8mV9WIBRnaxp5GJh9IEAaNOoYg==
 
+immutable-ops@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/immutable-ops/-/immutable-ops-0.6.0.tgz#c33108fedd6d0a12656758505fda9702d512ac75"
+  integrity sha512-GK+dh0Wz4/ZFj08fBPxVVj2Gj/HABzFZNTf0WQW4KXDxOS0taAFxfeJUZgnEHTNbiLcXxi5MHNiq1rAYaVVa1w==
+  dependencies:
+    ramda "^0.26.1"
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -8410,6 +8417,11 @@ raf@3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
+ramda@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
+  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -8701,6 +8713,16 @@ redux-devtools-extension@^2.13.8:
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
   integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
 
+redux-orm@^0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/redux-orm/-/redux-orm-0.13.3.tgz#c13cb4c05f7045ecd98e1d64dbc3b564722e8b97"
+  integrity sha512-76PWSJ8tZVcM+ynYUZf0qd1TJVoPXWNIPfjCYHfdiMlJ6N/gEu94W1wJ16einJ/Vng0+0/F1sxEB/3vWgMS0Dg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    immutable-ops "^0.6.0"
+    lodash "^4.17.11"
+    reselect "^3.0.1"
+
 redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
@@ -8932,6 +8954,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+  integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
 
 reselect@^4.0.0:
   version "4.0.0"
