@@ -8,6 +8,9 @@ import orm from 'app/orm';
 import MechsList from './MechsList';
 import MechDetails from './MechDetails';
 
+import { selectMech } from './mechsActions';
+import { selectCurrentMech } from './mechsSelectors';
+
 const mapState = state => {
   const session = orm.session(state.entities);
   const { Mech } = session;
@@ -30,27 +33,37 @@ const mapState = state => {
       return mech;
     });
 
-  return { mechs };
+  const currentMech = selectCurrentMech(state);
+
+  return { mechs, currentMech };
+};
+
+const actions = {
+  selectMech,
 };
 
 /* eslint-disable react/prefer-stateless-function */
 class Mechs extends Component {
   render() {
-    const { mechs = [] } = this.props;
+    const { mechs = [], selectMech, currentMech } = this.props;
 
-    const currentMech = mechs[0] || {};
+    const currentMechEntry = mechs.find(mech => mech.id === currentMech) || {};
 
     return (
       <Segment>
         <Grid>
           <Grid.Column width={10}>
             <Header as="h3">Mechs List</Header>
-            <MechsList mechs={mechs} />
+            <MechsList
+              mechs={mechs}
+              onMechClicked={selectMech}
+              currentMech={currentMech}
+            />
           </Grid.Column>
           <Grid.Column width={6}>
             <Header as="h3">Mech Details</Header>
             <Segment>
-              <MechDetails mech={currentMech} />
+              <MechDetails mech={currentMechEntry} />
             </Segment>
           </Grid.Column>
         </Grid>
@@ -59,4 +72,7 @@ class Mechs extends Component {
   }
 }
 
-export default connect(mapState)(Mechs);
+export default connect(
+  mapState,
+  actions
+)(Mechs);
