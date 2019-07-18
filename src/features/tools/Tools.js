@@ -6,6 +6,7 @@ import { loadUnitData } from './toolActions';
 
 const actions = { loadUnitData };
 
+/* eslint-disable react/prefer-stateless-function */
 class Tools extends Component {
   render() {
     const { loadUnitData } = this.props;
