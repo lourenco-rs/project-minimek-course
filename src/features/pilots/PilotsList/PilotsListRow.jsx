@@ -1,8 +1,14 @@
 import React from 'react';
+
 import { Table } from 'semantic-ui-react';
 
-const PilotsListRow = ({ pilot = {} }) => {
+const PilotsListRow = ({
+  pilot = {},
+  onPilotClicked = undefined,
+  selected,
+}) => {
   const {
+    id = null,
     name = '',
     rank = '',
     age = '',
@@ -12,7 +18,7 @@ const PilotsListRow = ({ pilot = {} }) => {
   } = pilot;
 
   return (
-    <Table.Row>
+    <Table.Row onClick={() => onPilotClicked(id)} active={selected}>
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{rank}</Table.Cell>
       <Table.Cell>{age}</Table.Cell>

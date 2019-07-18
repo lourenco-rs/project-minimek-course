@@ -5,6 +5,9 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 
 import orm from 'app/orm';
 
+import { selectPilot } from './pilotsActions';
+import { selectCurrentPilot } from './pilotsSelectors';
+
 import PilotsList from './PilotsList';
 import PilotDetails from './PilotDetails';
 
@@ -51,29 +54,39 @@ const mapState = state => {
       return pilot;
     });
 
+  const currentPilot = selectCurrentPilot(state);
+
   // Now that we have an array of all pilot objects, return it as a prop
-  return { pilots };
+  return { pilots, currentPilot };
+};
+
+const actions = {
+  selectPilot,
 };
 
 /* eslint-disable react/prefer-stateless-function */
 export class Pilots extends Component {
   render() {
-    const { pilots = [] } = this.props;
+    const { pilots = [], selectPilot, currentPilot } = this.props;
 
-    // Use the first pilot as the "current" one for display, if available.
-    const currentPilot = pilots[0] || {};
+    const currentPilotEntry =
+      pilots.find(pilot => pilot.id === currentPilot) || {};
 
     return (
       <Segment>
         <Grid>
           <Grid.Column width={10}>
             <Header as="h3">Pilot List</Header>
-            <PilotsList pilots={pilots} />
+            <PilotsList
+              pilots={pilots}
+              onPilotClicked={selectPilot}
+              currentPilot={currentPilot}
+            />
           </Grid.Column>
           <Grid.Column width={6}>
             <Header as="h3">Pilot Details</Header>
             <Segment>
-              <PilotDetails pilot={currentPilot} />
+              <PilotDetails pilot={currentPilotEntry} />
             </Segment>
           </Grid.Column>
         </Grid>
@@ -82,4 +95,7 @@ export class Pilots extends Component {
   }
 }
 
-export default connect(mapState)(Pilots);
+export default connect(
+  mapState,
+  actions
+)(Pilots);
